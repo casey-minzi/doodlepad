@@ -4,6 +4,7 @@ const colors = document.getElementsByClassName('jsColor');
 const range = document.getElementById('jsRange');
 const modeBtn = document.getElementById('jsMode');
 const saveBtn = document.getElementById('jsSave');
+const resetBtn = document.getElementById('jsReset');
 
 const INITIAL_COLOUR = '#2c2c2c';
 
@@ -77,6 +78,10 @@ function handleSaveBtn(e) {
     link.click();
 }
 
+function handleResetBtn() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+}
+
 if (canvas) {
     canvas.addEventListener('mousemove', onMouseMove);
     canvas.addEventListener('mousedown', startPainting);
@@ -98,4 +103,8 @@ if (modeBtn) {
 
 if (saveBtn) {
     saveBtn.addEventListener('click', handleSaveBtn);
+}
+
+if (resetBtn) {
+    resetBtn.addEventListener('click', handleResetBtn);
 }
