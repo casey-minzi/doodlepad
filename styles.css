@@ -34,7 +34,7 @@ canvas {
 
 .controls .controls_btns {
     margin-bottom: 20px;
-    color: rgb(255, 255, 255);
+    color: rgba(255, 255, 255);
 }
 
 .controls_btns button {
