@@ -19,24 +19,22 @@ ctx.fillStyle = INITIAL_COLOUR;
 let painting = false;
 let filling = false;
 
-function startPainting() {
-    painting = true;
-}
+const startPainting = () => painting = true;
 
-function stopPainting() {
-    painting = false;
-}
+const stopPainting = () => painting = false;
+
+const handleCM = e => e.preventDefault();
+
+const handleResetBtn = ()  => ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+const handleCanvasClick =() => filling && ctx.fillRect(0, 0, canvas.width, canvas.height);
 
 function onMouseMove(e) {
     const x = e.offsetX;
     const y = e.offsetY;
-    if (!painting) {
-        ctx.beginPath();
-        ctx.moveTo(x, y);
-    } else {
-        ctx.lineTo(x,y);
-        ctx.stroke();
-    } 
+    painting ?
+        (ctx.lineTo(x,y), ctx.stroke()) :
+        (ctx.beginPath(), ctx.moveTo(x, y));
 }
 
 function handleColorClick(e) {
@@ -51,35 +49,17 @@ function handleInputRange(e) {
 }
 
 function handleModeBtnClick() {
-    if (filling) {
-        filling = false;
-        modeBtn.innerText = 'Fill';
-    } else {
-        filling = true;
-        modeBtn.innerText = 'Paint';
-    }
+    filling ? 
+        (filling = false, modeBtn.innerText = 'Fill') :
+        (filling = true, modeBtn.innerText = 'Paint');
 }
 
-function handleCanvasClick() {
-    if (filling) {
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
-    }
-}
-
-function handleCM(e) {
-    e.preventDefault();
-}
-
-function handleSaveBtn(e) {
+function handleSaveBtn() {
     const image = canvas.toDataURL();
     const link = document.createElement('a');
     link.href = image;
     link.download = 'DoodlePad';
     link.click();
-}
-
-function handleResetBtn() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
 }
 
 if (canvas) {
@@ -93,18 +73,10 @@ if (canvas) {
 
 Array.from(colors).forEach(color => color.addEventListener('click', handleColorClick))
 
-if (range) {
-    range.addEventListener('input', handleInputRange);
-}
+range && range.addEventListener('input', handleInputRange);
 
-if (modeBtn) {
-    modeBtn.addEventListener('click', handleModeBtnClick);
-}
+modeBtn && modeBtn.addEventListener('click', handleModeBtnClick);
 
-if (saveBtn) {
-    saveBtn.addEventListener('click', handleSaveBtn);
-}
+saveBtn && saveBtn.addEventListener('click', handleSaveBtn);
 
-if (resetBtn) {
-    resetBtn.addEventListener('click', handleResetBtn);
-}
+resetBtn && resetBtn.addEventListener('click', handleResetBtn);
