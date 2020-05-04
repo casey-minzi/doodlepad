@@ -1,11 +1,20 @@
 @import "reset.css";
 body {
-    background-color: #f6f9fc;
+    background-color: #fcf8f3;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 50px;
-    padding-bottom:20px ;
+    padding-bottom:20px;
+    font-family: 'Roboto Slab', serif;
+    color: #ffaaa5;
+    font-weight: 700;
+}
+
+.title {
+    margin: 24px 0;
+    font-size: 40px;
+    text-transform: uppercase;
+    letter-spacing: 4px;
 }
 
 canvas {
@@ -15,6 +24,7 @@ canvas {
     background-color: #ffffff;
     box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
 }
+
 .controls {
     margin-top: 30px;
     display: flex;
@@ -29,15 +39,16 @@ canvas {
 .controls_btns button {
     all: unset;
     width: 60px;
-    padding: 5px 10px;
-    border: 1px solid rgba(0, 0, 0, .2);
-    color: rgba(0, 0, 0, .6);
-    background-color: #ffffff;
+    padding: 6px 10px;
+    color: rgb(255, 255, 255);
+    background-color: rgba(105, 132, 116);
     cursor: pointer;
     text-align: center;
     border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
     text-transform: uppercase;
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 1px;
 }
 
 .controls_btns button:active {
